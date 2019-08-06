@@ -129,7 +129,7 @@ def read(data=None):
             collectd.error(
                 'Error Opening Queue [{}] details: {}'
                 .format(queue_name, err))
-        if messages_detail is None:
+        if messages_detail is None or not messages_detail:
             count = 0
         else:
             count = messages_detail[0]['message_count']

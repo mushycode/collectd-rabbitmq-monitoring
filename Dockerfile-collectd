@@ -1,0 +1,6 @@
+FROM alpine:3.10
+RUN apk add py-pip collectd collectd-python && \
+pip install pyrabbit2
+COPY . /tmp/collectd-rabbitmq-monitoring/
+CMD ["collectd", "-f", "-C", "/etc/collectd/collectd.conf"]
+
