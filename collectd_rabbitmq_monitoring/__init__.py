@@ -34,6 +34,7 @@ def configure(configobj):
     port = int(config['port'][0])
     username = config['username'][0]
     password = config['password'][0]
+    vhost = config['vhost'][0]
     queues_to_count = []
     if 'message_count' in config:
         queues_to_count = config['message_count']
@@ -122,7 +123,7 @@ def read(data=None):
     for queue_name in queues_to_count:
         messages_detail = None
         try:
-            messages_detail = cl.get_messages('/', queue_name)
+            messages_detail = cl.get_messages(vhost, queue_name)
         except HTTPError as err:
             collectd.error(
                 'Error Opening Queue [{}] details: {}'
