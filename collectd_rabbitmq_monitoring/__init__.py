@@ -26,6 +26,7 @@ import time
 def configure(configobj):
     global INTERVAL
     global cl
+    global vhost
     global queues_to_count
 
     config = {c.key: c.values for c in configobj.children}
